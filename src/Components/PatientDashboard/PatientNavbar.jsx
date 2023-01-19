@@ -1,0 +1,48 @@
+import React from 'react'
+import useMediaQuery from '@mui/material/useMediaQuery';
+import logo from "../../Assets/logo.png"
+import "../PatientDashboardCss/PatientNav.css"
+import MenuIcon from '@mui/icons-material/Menu';
+
+const PatientNavbar = () => {
+    const smallScreen = useMediaQuery('(max-width:600px)');
+
+
+    const toggleNav = () =>{
+        let nav = document.getElementById("navDrawer");
+        nav.classList.toggle('showDrawer');
+       
+    }
+
+  return (
+    <>
+    {smallScreen &&
+     <>
+        <div className='Patient_smNavContainer'>
+            <div className="Patient_smNavContainer_logo">
+                 <img src={logo} alt="" />
+
+                
+            </div>
+            <div className="Patient_smNavContainer_MenuIcon"  onClick={()=>{toggleNav()}}>
+                <MenuIcon className="MenuIcon" />
+            </div>
+        </div>
+
+
+            <div className='Patients_NavDrawer' id="navDrawer" >
+                <ul className='Patients_NavDrawer_Ul'>
+                    <li className='Patients_NavDrawer_Ul_Item'>Profile</li>
+                    <li className='Patients_NavDrawer_Ul_Item'>Records</li>
+                    <li className='Patients_NavDrawer_Ul_Item'>Hospitals</li>
+                    <li className='Patients_NavDrawer_Ul_Item'>Medicals</li>
+                </ul>
+
+            </div>
+        </>
+    }
+    </>
+  )
+}
+
+export default PatientNavbar
